@@ -1,9 +1,8 @@
-// export const theAPI = 'https://hnrss.org/newest'
-export const theAPI = 'http://localhost:8080/https://hnrss.org/newest'
+export const theAPI = 'http://localhost:8080/'
 
 export const fetchAPIAndParseXML = async (url) => {
   const fetchAPI = async (URL) => {
-    const response = await fetch(URL, {
+    const response = await fetch(`${theAPI}${URL}`, {
       headers: { 'X-Requested-With': 'XMLHttpRequest' },
     })
     return await response.text()
