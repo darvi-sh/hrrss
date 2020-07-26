@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
-import { fetchAPIAndParseXML } from './utils'
+import { fetchAPIAndParseXMLinJSON } from './utils'
 
 import Form from './components/Form'
 import List from './components/List'
@@ -10,26 +10,6 @@ import Pagination from './components/Pagination'
 import './App.css'
 
 const ITEMS_PER_PAGE = 5
-
-const fetchAPIAndParseXMLinJSON = async (query) => {
-  const result = await fetchAPIAndParseXML(query)
-
-  const theListJSON = Array.from(result.getElementsByTagName('item')).map((item) => {
-    const itemJSON = {
-      title: item.getElementsByTagName('title')[0].textContent,
-      description: item.getElementsByTagName('description')[0].textContent,
-      pubDate: item.getElementsByTagName('pubDate')[0].textContent,
-      link: item.getElementsByTagName('link')[0].textContent,
-      creator: item.getElementsByTagName('dc:creator')[0].textContent,
-      comments: item.getElementsByTagName('comments')[0].textContent,
-      guid: item.getElementsByTagName('guid')[0].textContent,
-    }
-
-    return itemJSON
-  })
-
-  return theListJSON
-}
 
 function App() {
   const [query, setQuery] = useState('')
