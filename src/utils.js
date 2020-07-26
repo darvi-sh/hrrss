@@ -1,8 +1,8 @@
-export const theAPI = 'http://localhost:8080/'
+const theAPI = process.env.REACT_APP_CORS_PROXY_URL || 'http://localhost:8080'
 
 const fetchAPIAndParseXML = async (url) => {
   const fetchAPI = async (URL) => {
-    const response = await fetch(`${theAPI}${URL}`, {
+    const response = await fetch(`${theAPI}/${URL}`, {
       headers: { 'X-Requested-With': 'XMLHttpRequest' },
     })
     return await response.text()

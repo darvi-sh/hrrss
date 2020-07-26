@@ -22,6 +22,8 @@ Add Unit Tests
 
 More error handlings
 
+Deployment and `.env` file
+
 ---
 
 # Original README
