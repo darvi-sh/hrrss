@@ -12,6 +12,10 @@ And this runs the application itself
 
 `npm run start`
 
+## Implement map, filter and reduce
+
+[See here](map-filter-reduce.js)
+
 ## Room for improvements
 
 Utilise [Component Composition](https://www.robinwieruch.de/react-component-composition)
