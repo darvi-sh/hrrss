@@ -12,7 +12,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "heroku-postbuild": "node cors_proxy.js"
+    "heroku-postbuild": "echo 'skipping build'"
   },
   "engines": {
     "node": "12.x"
