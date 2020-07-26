@@ -15,5 +15,5 @@ export const fetchAPIAndParseXML = async (url) => {
 
   const fetchedAPI = await fetchAPI(url)
 
-  return await parseXML(fetchedAPI)
+  return await parseXML(Array(fetchedAPI))
 }

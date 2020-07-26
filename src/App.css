@@ -1,6 +1,7 @@
 body {
   background-color: whitesmoke;
   padding: 20px;
+  overflow-x: hidden;
 }
 
 * {
@@ -19,4 +20,67 @@ a[target='_blank']::after {
 
 .loading {
   margin-top: 30px;
+}
+
+.slide-forward-enter {
+  opacity: 0;
+  transform: translateX(-10%);
+}
+.slide-forward-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.slide-forward-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.slide-forward-exit-active {
+  opacity: 0;
+  transform: translateX(10%);
+}
+.slide-forward-enter-active,
+.slide-forward-exit-active {
+  transition: opacity 1300ms, transform 1300ms;
+}
+
+.slide-backward-enter {
+  opacity: 0;
+  transform: translateX(10%);
+}
+.slide-backward-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.slide-backward-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.slide-backward-exit-active {
+  opacity: 0;
+  transform: translateX(-10%);
+}
+.slide-backward-enter-active,
+.slide-backward-exit-active {
+  transition: opacity 1300ms, transform 1300ms;
+}
+
+.slide-drop-enter {
+  opacity: 0;
+  transform: translateY(-10%);
+}
+.slide-drop-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+}
+.slide-drop-exit {
+  opacity: 1;
+  transform: translateY(0%);
+}
+.slide-drop-exit-active {
+  opacity: 0;
+  transform: translateY(10%);
+}
+.slide-drop-enter-active,
+.slide-drop-exit-active {
+  transition: opacity 1300ms, transform 1300ms;
 }

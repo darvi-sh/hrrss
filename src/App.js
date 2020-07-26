@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Transition, CSSTransition } from 'react-transition-group'
+import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
 import { fetchAPIAndParseXML } from './utils'
 
@@ -35,6 +35,7 @@ function App() {
   const [query, setQuery] = useState('')
   const [items, setItems] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
+  const [slideDirection, setSlideDirection] = useState('slide-drop')
   const [loading, setLoading] = useState(false)
 
   const onSubmit = (query) => {
@@ -42,8 +43,20 @@ function App() {
   }
 
   const onPageChange = (pageNr) => {
-    setCurrentPage(pageNr)
+    setLoading(true)
+    setCurrentPage((prevPageNr) => {
+      if (prevPageNr > pageNr) {
+        console.log('slide-forward')
+        setSlideDirection('slide-forward')
+      } else {
+        console.log('slide-backward')
+        setSlideDirection('slide-backward')
+      }
+
+      return pageNr
+    })
     window.scrollTo(0, 0)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -62,6 +75,8 @@ function App() {
       }
 
       setItems(theListJSON)
+      setCurrentPage(1)
+      setSlideDirection('slide-drop')
       setLoading(false)
     })()
   }, [query])
@@ -69,15 +84,22 @@ function App() {
   return (
     <div className="app">
       <Form onSubmit={onSubmit} loading={loading} />
-
-      {!loading && (
-        <Transition timeout={4000} in={true} appear>
+      <br />
+      classNames: {slideDirection}
+      <br />
+      <SwitchTransition mode="out-in">
+        <CSSTransition
+          key={`${query}-${currentPage}`}
+          in={true}
+          timeout={1300}
+          classNames={slideDirection}
+          unmountOnExit
+        >
           <List items={items.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)} />
-        </Transition>
-      )}
-
+        </CSSTransition>
+      </SwitchTransition>
       {loading && <div className="loading">Loading Content</div>}
-
+      {!loading && items.length === 0 && <div>There is nothing to show here. Try entering a valid URL.</div>}
       {!loading && (
         <Pagination onPageChange={onPageChange} currentPage={currentPage} totalPages={items.length / ITEMS_PER_PAGE} />
       )}
