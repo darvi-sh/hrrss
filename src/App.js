@@ -26,11 +26,9 @@ function App() {
     setLoading(true)
     setCurrentPage((prevPageNr) => {
       if (prevPageNr > pageNr) {
-        console.log('slide-forward')
-        setSlideDirection('slide-forward')
-      } else {
-        console.log('slide-backward')
         setSlideDirection('slide-backward')
+      } else {
+        setSlideDirection('slide-forward')
       }
 
       return pageNr
@@ -42,6 +40,7 @@ function App() {
   useEffect(() => {
     ;(async () => {
       setLoading(true)
+      setItems([])
 
       let theListJSON
 
@@ -64,20 +63,21 @@ function App() {
   return (
     <div className="app">
       <Form onSubmit={onSubmit} loading={loading} />
-      <br />
-      classNames: {slideDirection}
-      <br />
-      <SwitchTransition mode="out-in">
-        <CSSTransition
-          key={`${query}-${currentPage}`}
-          in={true}
-          timeout={1300}
-          classNames={slideDirection}
-          unmountOnExit
-        >
-          <List items={items.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)} />
-        </CSSTransition>
-      </SwitchTransition>
+
+      <div className={slideDirection}>
+        <SwitchTransition mode="out-in">
+          <CSSTransition
+            appear={true}
+            key={`${query}-${currentPage}`}
+            in={true}
+            timeout={300}
+            classNames="slide"
+            unmountOnExit
+          >
+            <List items={items.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)} />
+          </CSSTransition>
+        </SwitchTransition>
+      </div>
       {loading && <div className="loading">Loading Content</div>}
       {!loading && items.length === 0 && <div>There is nothing to show here. Try entering a valid URL.</div>}
       {!loading && (
