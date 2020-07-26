@@ -1,4 +1,8 @@
-# Get started
+# Implement map, filter and reduce
+
+[See here](map-filter-reduce.js)
+
+# Get started with the RSS Feed App
 
 Execute once
 
@@ -12,9 +16,17 @@ And this runs the application itself
 
 `npm run start`
 
-## Implement map, filter and reduce
+## See live versions
 
-[See here](map-filter-reduce.js)
+Either of these URLs should work
+
+https://nervous-fermat-bc85dc.netlify.app/
+
+https://hrrss-git-master.darvishzadeh.vercel.app/
+
+Given the proxy server is running
+
+https://hn-rss-reader.herokuapp.com/
 
 ## Room for improvements
 
