@@ -1,3 +1,21 @@
+# Get started
+
+Execute once
+
+`npm install`
+
+This runs a simple server to get around CORS nightmare. It's mandatory.
+
+`node cors_proxy.js`
+
+And this runs the application itself
+
+`npm run start`
+
+---
+
+# Previous README
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
