@@ -1,0 +1,15 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.pagination button {
+  font-size: 1em;
+  margin: 0 5px;
+  user-select: none;
+}
+
+.pagination button:not(:disabled) {
+  cursor: pointer;
+}

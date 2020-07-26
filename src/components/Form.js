@@ -1,14 +1,18 @@
 import React from 'react'
 
-function Form() {
+import './Form.css'
+
+function Form(props) {
   function fetch() {
     console.log('hah we be fetchin')
   }
 
   return (
-    <div>
-      <input type="text" placeholder="Type XML URL Feed" />
-      <button onClick={fetch}>Fetch</button>
+    <div className="input-wrapper">
+      <input className="input" type="text" placeholder="Enter XML URL Feed" />
+      <button className="submit" onClick={fetch} disabled={props.loading}>
+        Fetch
+      </button>
     </div>
   )
 }

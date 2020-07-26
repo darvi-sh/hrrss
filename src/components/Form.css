@@ -1,0 +1,18 @@
+.input-wrapper {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+}
+
+.input,
+.submit {
+  font-size: 1em;
+}
+
+.input {
+  flex-grow: 1;
+}
+
+.submit {
+  margin-left: 5px;
+}

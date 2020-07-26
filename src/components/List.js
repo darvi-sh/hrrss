@@ -8,13 +8,16 @@ function List(props) {
       <h1>
         {item.title}{' '}
         <small>
-          <a href={item.link}>link</a>
+          <a href={item.link} target="_blank" rel="noopener noreferrer">
+            link
+          </a>
         </small>
       </h1>
       <p dangerouslySetInnerHTML={{ __html: item.description }} />
       Published on: {item.pubDate} by {item.creator}
-      <br />
-      <a href={item.comments}>see comments</a>
+      <p>
+        <a href={item.comments}>see comments</a>
+      </p>
       {/* <br />
       guid: {item.guid} */}
     </div>

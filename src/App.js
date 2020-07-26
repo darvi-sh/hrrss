@@ -12,10 +12,13 @@ const ITEMS_PER_PAGE = 5
 
 function App() {
   const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     ;(async () => {
+      setLoading(true)
       const result = await fetchAPIAndParseXML(theAPI)
+      setLoading(false)
 
       const theListJSON = Array.from(result.getElementsByTagName('item')).map((item) => {
         const itemJSON = {
@@ -37,12 +40,14 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <Form />
+    <div className="app">
+      <Form loading={loading} />
 
-      {items.length && <List items={items.slice(0, ITEMS_PER_PAGE)} />}
+      {!loading && <List items={items.slice(0, ITEMS_PER_PAGE)} />}
 
-      {/*if needed*/ items.length && <Pagination pages={items.length / ITEMS_PER_PAGE} />}
+      {loading && <div className="loading">Loading Content</div>}
+
+      {!loading && <Pagination currentPage={1} pages={items.length / ITEMS_PER_PAGE} />}
     </div>
   )
 }
