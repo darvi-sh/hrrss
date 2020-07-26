@@ -12,8 +12,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "heroku-prebuild": "npm i forever",
-    "heroku-postbuild": "forever start cors_proxy.js"
+    "heroku-postbuild": "node cors_proxy.js"
   },
   "engines": {
     "node": "12.x"
