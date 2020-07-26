@@ -12,6 +12,8 @@ This runs a simple server to get around CORS nightmare. It's mandatory.
 
 `node cors_proxy.js`
 
+A [separate repo](https://github.com/darvishzadeh/hnrss_cors_proxy) is made for live deployment.
+
 And this runs the application itself
 
 `npm run start`
