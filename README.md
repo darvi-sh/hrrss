@@ -12,9 +12,19 @@ And this runs the application itself
 
 `npm run start`
 
+## Room for improvements
+
+Utilise [Component Composition](https://www.robinwieruch.de/react-component-composition)
+
+Add TS Signatures
+
+Add Unit Tests
+
+More error handlings
+
 ---
 
-# Previous README
+# Original README
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
